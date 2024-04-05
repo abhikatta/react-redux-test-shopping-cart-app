@@ -10,7 +10,7 @@ const ProductComponent = ({ product }) => {
   return (
     <div className=" w-auto h-auto flex flex-col bg-slate-100 rounded-2xl justify-center items-center">
       <Link
-        className=" flex flex-col items-center"
+        className=" min-h-[20rem] flex flex-col items-center"
         to={`/product/${product.id}`}>
         <img className="my-2" width={100} src={product.image}></img>
         <div className="w-[15rem]">

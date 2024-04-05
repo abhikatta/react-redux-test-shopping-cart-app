@@ -17,7 +17,10 @@ const Cart = () => {
             <p>{product.title}</p>
             <p>${product.price}</p>
 
-            <button onClick={() => dispatch(removeProductFromCart(product))}>
+            <button
+              className=" bg-slate-200 hover:bg-slate-700 hover:text-white
+            duration-300 rounded-md my-2 px-4 py-2"
+              onClick={() => dispatch(removeProductFromCart(product))}>
               Remove Item
             </button>
           </div>
