@@ -6,11 +6,6 @@ const Header = () => {
       <a href="/">
         <p className="pl-2 py-3 ">Fake Shop Store</p>
       </a>
-      <div>
-        <Link to={`/cart`}>
-          <button>Cart</button>
-        </Link>
-      </div>
     </nav>
   );
 };

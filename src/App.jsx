@@ -20,9 +20,11 @@ const App = () => {
           <Route>404 not found</Route>
         </Routes>
       </Router>
-      <div>
-        <button onClick={() => setShowCart((prevShow) => !prevShow)}>
-          Show Cart
+      <div className="my-5 w-full flex flex-col justify-center  items-center">
+        <button
+          className="my-10"
+          onClick={() => setShowCart((prevShow) => !prevShow)}>
+          {showCart ? "Hide Cart" : "Show Cart"}
         </button>
 
         {showCart && <Cart />}
