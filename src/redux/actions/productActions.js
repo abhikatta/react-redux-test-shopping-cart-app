@@ -38,6 +38,13 @@ const setProducts = (products) => {
   };
 };
 
+const fetchSingleProduct = (id) => async (dispatch) => {
+  const response = await fetch(`${BASE_URL}/products/${id}`);
+  const data = await response.json();
+  console.log(data);
+  dispatch({ type: actionTypes.SELECTED_PRODUCT, payload: data });
+};
+
 const selectedProduct = (product) => {
   return {
     type: actionTypes.SELECTED_PRODUCT,
@@ -50,4 +57,10 @@ const removeSelectedProduct = () => {
     type: actionTypes.REMOVE_SELECTED_PRODUCT,
   };
 };
-export { setProducts, selectedProduct, removeSelectedProduct, fetchProducts };
+export {
+  setProducts,
+  selectedProduct,
+  removeSelectedProduct,
+  fetchProducts,
+  fetchSingleProduct,
+};
