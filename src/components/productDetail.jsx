@@ -5,6 +5,7 @@ import {
   removeSelectedProduct,
   fetchSingleProduct,
 } from "../redux/actions/productActions";
+import { actionTypes } from "../redux/constants/actionTypes";
 
 const ProductDetail = () => {
   const product = useSelector((state) => state.product);
@@ -17,11 +18,21 @@ const ProductDetail = () => {
   }, [productId]);
 
   return (
-    <div>
+    <div className="w-auto h-screen justify-around items-center mx-4 flex flex-row">
       <img width={200} src={product.image}></img>
-      <div>{product.title}</div>
-      <div>{product.description}</div>
-      <div>${product.price}</div>
+      <div className="w-[40%]">
+        <div>{product.title}</div>
+        <div>{product.description}</div>
+        <div>Price: ${product.price}</div>
+        <button
+          className=" bg-slate-200 hover:bg-slate-700 hover:text-white duration-300 rounded-md my-2 px-4 py-2"
+          onClick={() => {
+            dispatch({ type: actionTypes.ADD_TO_CART, payload: product });
+            console.log(cartProducts);
+          }}>
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 };
