@@ -28,9 +28,10 @@ const fetchProducts = () => async (dispatch) => {
   // ***********
   const response = await fetch(`${BASE_URL}/products`);
   const data = await response.json();
-  console.log(data);
+
   dispatch({ type: actionTypes.FETCH_PRODUCTS, payload: data });
 };
+
 const setProducts = (products) => {
   return {
     type: actionTypes.SET_PRODUCTS,
@@ -41,7 +42,7 @@ const setProducts = (products) => {
 const fetchSingleProduct = (id) => async (dispatch) => {
   const response = await fetch(`${BASE_URL}/products/${id}`);
   const data = await response.json();
-  console.log(data);
+
   dispatch({ type: actionTypes.SELECTED_PRODUCT, payload: data });
 };
 
@@ -57,10 +58,27 @@ const removeSelectedProduct = () => {
     type: actionTypes.REMOVE_SELECTED_PRODUCT,
   };
 };
+
+const addToCartProduct = (cartProduct) => {
+  return {
+    type: actionTypes.ADD_TO_CART,
+    payload: cartProduct,
+  };
+};
+
+const removeProuctFromCart = (cartProduct) => {
+  return {
+    type: actionTypes.ADD_TO_CART,
+    payload: cartProduct,
+  };
+};
+
 export {
   setProducts,
   selectedProduct,
   removeSelectedProduct,
   fetchProducts,
   fetchSingleProduct,
+  addToCartProduct,
+  removeProuctFromCart,
 };
