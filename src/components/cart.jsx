@@ -1,8 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeProductFromCart } from "../redux/actions/productActions";
 
 const Cart = () => {
   const cartProducts = useSelector((state) => state.cartProducts);
+  const dispatch = useDispatch();
   console.log("cartProducts", cartProducts);
   return (
     <div className=" grid grid-cols-5 gap-3">
@@ -12,7 +14,9 @@ const Cart = () => {
             <div key={product.id}>
               <img src={product.image} width={50}></img>
               <p>{product.title}</p>
-              <button>Remove Item</button>
+              <button onClick={() => dispatch(removeProductFromCart(product))}>
+                Remove Item
+              </button>
             </div>
           );
         })}

@@ -66,9 +66,9 @@ const addToCartProduct = (cartProduct) => {
   };
 };
 
-const removeProuctFromCart = (cartProduct) => {
+const removeProductFromCart = (cartProduct) => {
   return {
-    type: actionTypes.ADD_TO_CART,
+    type: actionTypes.REMOVE_FROM_CART,
     payload: cartProduct,
   };
 };
@@ -80,5 +80,5 @@ export {
   fetchProducts,
   fetchSingleProduct,
   addToCartProduct,
-  removeProuctFromCart,
+  removeProductFromCart,
 };
