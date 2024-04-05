@@ -9,7 +9,7 @@ import ProductComponent from "./components/productComponent.jsx";
 
 const App = () => {
   return (
-    <div className="w-screen h-screen flex flex-col">
+    <div className="w-auto h-screen flex flex-col">
       <Header />
       <Router>
         <Routes>
