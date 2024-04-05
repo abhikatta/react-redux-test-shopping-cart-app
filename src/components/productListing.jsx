@@ -1,32 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductComponent from "./productComponent";
-import { fetchProducts, setProducts } from "../redux/actions/productActions";
-
-const API_ENDPOINT = "https://fakestoreapi.com/products";
+import { fetchProducts } from "../redux/actions/productActions";
 
 const ProductListing = () => {
-  const products = useSelector((state) => state);
+  const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
 
-  // const fetchProducts = async () => {
-  //   try {
-  //     const res = await fetch(API_ENDPOINT);
-  //     const fetchedData = await res.json();
-
-  //     fetchedData && dispatch(setProducts(fetchedData));
-  //   } catch (error) {
-  //     console.log("something went wrong", error.message);
-  //   }
-  // };
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-  console.log(products);
   return (
-    <div>
-      <ProductComponent />
-    </div>
+    products && (
+      <div className=" my-3 w-auto h-auto grid  gap-2 grid-cols-5">
+        {products.map((product) => (
+          <ProductComponent key={product.id} product={product} />
+        ))}
+      </div>
+    )
   );
 };
 
