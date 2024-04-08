@@ -26,18 +26,50 @@ export const selectedProductReducer = (state = {}, action) => {
       return state;
   }
 };
+
 export const addToCartReducer = (state = addToCartInitialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
-      return {
-        products: [...state.products, action.payload],
-      };
+      const existingProductIndex = state.products.findIndex(
+        (product) => product.id === action.payload.id
+      );
+      // if product exists in list, update its quantity else just add the product with quantity = 1
+      if (existingProductIndex !== -1) {
+        const updatedProducts = [...state.products];
+        updatedProducts[existingProductIndex] = {
+          ...updatedProducts[existingProductIndex],
+          quantity: updatedProducts[existingProductIndex].quantity + 1,
+        };
+
+        return {
+          products: updatedProducts,
+        };
+      } else {
+        return {
+          products: [...state.products, { ...action.payload, quantity: 1 }],
+        };
+      }
+
     case actionTypes.REMOVE_FROM_CART:
-      return {
-        products: state.products.filter(
-          (product) => product.id !== action.payload.id
-        ),
-      };
+      const productIndexToRemove = state.products.findIndex(
+        (product) => product.id === action.payload.id
+      );
+      // same as adding, reduce quantity by 1 or splice the element out of array
+      if (productIndexToRemove !== -1) {
+        const updatedProducts = [...state.products];
+        const productToRemoveQuantity =
+          updatedProducts[productIndexToRemove].quantity;
+        if (productToRemoveQuantity > 1) {
+          updatedProducts[productIndexToRemove] = {
+            ...updatedProducts[productIndexToRemove],
+            quantity: updatedProducts[productIndexToRemove].quantity - 1,
+          };
+        } else {
+          updatedProducts.splice(productIndexToRemove, 1);
+        }
+        return { products: updatedProducts };
+      }
+      return state;
     default:
       return state;
   }

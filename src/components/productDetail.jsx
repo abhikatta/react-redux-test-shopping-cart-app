@@ -28,7 +28,6 @@ const ProductDetail = () => {
           className=" bg-slate-200 hover:bg-slate-700 hover:text-white duration-300 rounded-md my-2 px-4 py-2"
           onClick={() => {
             dispatch({ type: actionTypes.ADD_TO_CART, payload: product });
-            console.log(cartProducts);
           }}>
           Add to Cart
         </button>
