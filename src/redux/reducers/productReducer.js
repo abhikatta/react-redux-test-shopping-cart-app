@@ -70,6 +70,13 @@ export const cartReducer = (state = addToCartInitialState, action) => {
         return { products: updatedProducts };
       }
       return state;
+    case actionTypes.DELETE_PRODUCT_FROM_CART:
+      return {
+        products: state.products.filter(
+          (product) => product.id !== action.payload.id
+        ),
+      };
+
     default:
       return state;
   }

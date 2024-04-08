@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCartProduct,
+  deleteProductFromCart,
   removeProductFromCart,
 } from "../redux/actions/productActions";
 
@@ -36,6 +37,12 @@ const Cart = () => {
                   -
                 </button>
               </div>
+              <button
+                onClick={() => dispatch(deleteProductFromCart(product))}
+                className=" bg-slate-200 hover:bg-slate-700 hover:text-white
+            duration-300 rounded-md my-2 px-4 py-2">
+                Remove Item
+              </button>
             </div>
           );
         })}

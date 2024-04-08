@@ -72,6 +72,12 @@ const removeProductFromCart = (cartProduct) => {
     payload: cartProduct,
   };
 };
+const deleteProductFromCart = (cartProduct) => {
+  return {
+    type: actionTypes.DELETE_PRODUCT_FROM_CART,
+    payload: cartProduct,
+  };
+};
 
 export {
   setProducts,
@@ -81,4 +87,5 @@ export {
   fetchSingleProduct,
   addToCartProduct,
   removeProductFromCart,
+  deleteProductFromCart,
 };
