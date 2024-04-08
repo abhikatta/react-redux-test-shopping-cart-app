@@ -9,15 +9,15 @@ import Cart from "./components/cart.jsx";
 
 const App = () => {
   const [showCart, setShowCart] = useState(false);
+
   return (
     <div className="w-auto h-screen flex flex-col">
       <Router>
         <Header />
         <Routes>
           <Route path="/" Component={ProductListing} />
-
           <Route path="/product/:productId" Component={ProductDetail} />
-          <Route>404 not found</Route>
+          <Route path="/cart" Component={Cart} />
         </Routes>
       </Router>
       <div className="my-5 w-full flex flex-col justify-center  items-center">
@@ -26,7 +26,6 @@ const App = () => {
           onClick={() => setShowCart((prevShow) => !prevShow)}>
           {showCart ? "Hide Cart" : "Show Cart"}
         </button>
-
         {showCart && <Cart />}
       </div>
     </div>
