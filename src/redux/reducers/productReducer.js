@@ -27,7 +27,7 @@ export const selectedProductReducer = (state = {}, action) => {
   }
 };
 
-export const addToCartReducer = (state = addToCartInitialState, action) => {
+export const cartReducer = (state = addToCartInitialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       const existingProductIndex = state.products.findIndex(
